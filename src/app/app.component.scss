@@ -1,0 +1,21 @@
+.grid {
+  display: grid;
+  // grid-template-rows: 10vh, 80vh, 10vh;
+  grid-template-columns: 100vw;
+  grid-template-areas:
+    "nav"
+    "content"
+    "footer";
+}
+
+.nav {
+  grid-area: nav;
+}
+
+.content {
+  grid-area: content;
+}
+
+.footer {
+  grid-area: footer;
+}

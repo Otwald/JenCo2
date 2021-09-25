@@ -1,0 +1,8 @@
+<footer className="footer">
+  <div class="p1-3">
+    <div *ngFor="let item of items">
+        <a [routerLink]="[item.route]" routerLinkActive="active" (click)="setTitle(item.title)">{{item.name}}</a>
+    </div>
+    <span class="text-muted">2020 &copy; All Rights Reserved</span>
+  </div>
+</footer>
