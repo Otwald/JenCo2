@@ -1,1 +1,73 @@
-<p>login works!</p>
+<div class="row">
+  <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+    <div class="card card-signin m-5">
+      <div class="card-body">
+        <h5 class="card-title text-center">Anmeldung</h5>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="form-label-group">
+            <label htmlFor="inputEmail">Email-Address</label>
+            <input
+              type="email"
+              formControlName="email"
+              id="inputEmail"
+              placeholder="Email address"
+              [value]="this.loginForm.value.email"
+              autoFocus
+              required
+            />
+            <div
+              *ngIf="email.invalid && (email.touched || email.dirty)"
+              class="invalid-feedback"
+            >
+              <div *ngIf="email.errors?.required">Ein E-Mail wird benötigt</div>
+            </div>
+          </div>
+
+          <div class="form-label-group">
+            <input
+              type="password"
+              formControlName="password"
+              id="inputPassword"
+              class="form-control"
+              placeholder="Password"
+              [value]="this.loginForm.value.password"
+              required
+            />
+            <div
+              *ngIf="password.invalid && (password.touched || password.dirty)"
+              class="invalid-feedback"
+            >
+              <div *ngIf="password.errors?.required">
+                Ein E-Mail wird benötigt
+              </div>
+            </div>
+            <!-- <label
+                onClick={() => props.handlerRegi("lostpw")}
+                htmlFor="inputPassword"
+              >
+                Passwort <u>vergessen?</u>
+              </label> -->
+          </div>
+          <button
+            id="text"
+            class="btn btn-lg btn-primary btn-block text-uppercase"
+            type="submit"
+          >
+            Einloggen
+          </button>
+          <!-- {fail ?
+          <div>Login ist Fehlgeschlagen</div>
+          : ""} -->
+        </form>
+        <hr />
+        <!-- <div class="text-muted clickable">
+            Noch kein Account?
+            <br />
+            <div onClick={() => props.handlerRegi("regi")}>
+              <u>Zur Regestrierung</u>
+            </div>
+          </div> -->
+      </div>
+    </div>
+  </div>
+</div>
