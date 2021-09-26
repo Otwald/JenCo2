@@ -9,6 +9,7 @@ import { DataprivacyComponent } from './pages/footer/dataprivacy/dataprivacy.com
 import { ImpressumComponent } from './pages/footer/impressum/impressum.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AuthModule } from './pages/auth/auth.module';
+import { AccountModule } from './pages/account/account.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { AuthModule } from './pages/auth/auth.module';
     ImpressumComponent,
     HomeComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, AuthModule],
+  imports: [BrowserModule, AppRoutingModule, AuthModule, AccountModule],
   providers: [],
   bootstrap: [AppComponent],
 })
