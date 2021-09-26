@@ -12,6 +12,7 @@ export class AuthService {
     user.first = 'First';
     user.last = 'Last';
     user.age = new Date();
+    user.bill = true;
     this.setUserJson(user);
   }
 

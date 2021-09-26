@@ -8,12 +8,9 @@ const routes: Routes = [
   {
     path: 'account',
     component: AccountComponent,
-    children: [
-      { path: '', redirectTo: 'root', pathMatch: 'full' },
-      { path: 'edit', component: EditComponent },
-      { path: 'pwchange', component: PwchangeComponent },
-    ],
   },
+  { path: 'account/pwchange', component: PwchangeComponent },
+  { path: 'account/edit', component: EditComponent },
 ];
 
 @NgModule({

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { User } from '../../auth/user';
 import { AuthService } from '../../auth/_services/auth.service';
 
 @Component({
@@ -14,9 +15,10 @@ export class AccountComponent implements OnInit {
     last: [''],
     age: [],
   });
+  user: User;
 
   constructor(private fb: FormBuilder, private auth: AuthService) {
-    this.userForm.setValue(this.auth.getUserJson());
+    this.user = this.auth.getUserJson();
   }
 
   ngOnInit(): void {}
