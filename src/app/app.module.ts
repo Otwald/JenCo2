@@ -8,6 +8,7 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { DataprivacyComponent } from './pages/footer/dataprivacy/dataprivacy.component';
 import { ImpressumComponent } from './pages/footer/impressum/impressum.component';
 import { HomeComponent } from './pages/home/home.component';
+import { AuthModule } from './pages/auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -16,13 +17,10 @@ import { HomeComponent } from './pages/home/home.component';
     FooterComponent,
     DataprivacyComponent,
     ImpressumComponent,
-    HomeComponent
+    HomeComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, AuthModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

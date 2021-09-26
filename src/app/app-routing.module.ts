@@ -8,6 +8,10 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'impressum', component: ImpressumComponent },
   { path: 'dataprivacy', component: DataprivacyComponent },
+  { path: 'welcome', component: HomeComponent },
+  // {path: 'round' , component : },
+  // {path: 'admin' , component : },
+  // {path: 'login' , component : },
 ];
 
 @NgModule({
