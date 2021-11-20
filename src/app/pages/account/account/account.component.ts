@@ -9,11 +9,13 @@ import { AuthService } from '../../auth/_services/auth.service';
   styleUrls: ['./account.component.scss'],
 })
 export class AccountComponent implements OnInit {
-
   user: User;
 
   constructor(private fb: FormBuilder, private auth: AuthService) {
     this.user = this.auth.getUserJson();
+    if (this.user) {
+      this.user.age = new Date(this.user.age?.toString() as string);
+    }
   }
 
   ngOnInit(): void {}

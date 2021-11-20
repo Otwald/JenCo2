@@ -3,14 +3,18 @@ import { RouterModule, Routes } from '@angular/router';
 import { AccountComponent } from './account/account.component';
 import { EditComponent } from './edit/edit.component';
 import { PwchangeComponent } from './pwchange/pwchange.component';
+import { RootComponent } from './root/root.component';
 
 const routes: Routes = [
   {
     path: 'account',
-    component: AccountComponent,
+    component: RootComponent,
+    children: [
+      { path: 'pwchange', component: PwchangeComponent },
+      { path: 'edit', component: EditComponent },
+      { path: '', component: AccountComponent },
+    ],
   },
-  { path: 'account/pwchange', component: PwchangeComponent },
-  { path: 'account/edit', component: EditComponent },
 ];
 
 @NgModule({
