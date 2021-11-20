@@ -1,91 +1,76 @@
-Moin
-<!-- (
-              <form class="was-validated card-account">
-                <div class="form-row justify-content-center">
-                  <div class="form-group col-sm-3">
-                    <label>Profil Name</label>
-                    <input
-                      required
-                      minLength="2"
-                      maxLength="32"
-                      type="text"
-                      class="form-control"
-                      name="profil"
-                      onChange={(event) => setProfil(event.target.value)}
-                      placeholder={profil}
-                      id="profil"
-                      value={profil}
-                    />
-                  </div>
-                </div>
-                <div class="form-row justify-content-center">
-                  <div class="form-group col-sm-3">
-                    <label>Vorname</label>
-                    <input
-                      required
-                      minLength="2"
-                      maxLength="32"
-                      type="text"
-                      class="form-control"
-                      name="first"
-                      onChange={(event) => setFirst(event.target.value)}
-                      placeholder={first}
-                      id="first"
-                      value={first}
-                    />
-                  </div>
-                  <div class="form-group col-sm-3">
-                    <label>Nachname</label>
-                    <input
-                      required
-                      minLength="2"
-                      maxLength="32"
-                      type="text"
-                      class="form-control"
-                      name="last"
-                      onChange={(event) => setLast(event.target.value)}
-                      placeholder={last}
-                      id="last"
-                      value={last}
-                    />
-                  </div>
-                </div>
-                <div class="form-row justify-content-center">
-                  <div class="form-group col-sm-3">
-                    <label>Alter</label>
-                    <input
-                      required
-                      type="date"
-                      name="age"
-                      class="form-control"
-                      id="age"
-                      onChange={(event) => setAge(event.target.value)}
-                      value={useDate(age)}
-                    />
-                  </div>
-                </div>
-                <div class="form-row justify-content-center">
-                  <div class="form-group col-sm-3">
-                    <button
-                      id="text"
-                      class="btn btn-outline-dark"
-                      onClick={(event) => {
-                        setEdit(false);
-                        event.preventDefault();
-                      }}
-                    >
-                      Abbruch
-                    </button>
-                  </div>
-                  <div class="form-group col-sm-3">
-                    <button
-                      id="text"
-                      class="btn btn-outline-dark"
-                      onClick={onSave}
-                    >
-                      Save
-                    </button>
-                  </div>
-                </div>
-              </form>
-            )  -->
+<form [formGroup]="userForm" class="was-validated card-account">
+  <div class="form-row justify-content-center">
+    <div class="form-group col-sm-3">
+      <label>Profil Name</label>
+      <input
+        formControlName="profile"
+        required
+        minLength="2"
+        maxLength="50"
+        type="text"
+        class="form-control"
+        name="profil"
+        placeholder="{{ this.userForm.value.profile }}"
+        id="profil"
+        [value]="this.userForm.value.profile"
+      />
+    </div>
+  </div>
+  <div class="form-row justify-content-center">
+    <div class="form-group col-sm-3">
+      <label>Vorname</label>
+      <input
+        formControlName="first"
+        required
+        minLength="2"
+        maxLength="50"
+        type="text"
+        class="form-control"
+        name="first"
+        placeholder="{{ this.userForm.value.first }}"
+        id="first"
+        [value]="this.userForm.value.first"
+      />
+    </div>
+    <div class="form-group col-sm-3">
+      <label>Nachname</label>
+      <input
+        formControlName="last"
+        required
+        minLength="2"
+        maxLength="50"
+        type="text"
+        class="form-control"
+        name="last"
+        placeholder="{{ this.userForm.value.last }}"
+        id="last"
+        [value]="this.userForm.value.last"
+      />
+    </div>
+  </div>
+  <div class="form-row justify-content-center">
+    <div class="form-group col-sm-3">
+      <label>Alter</label>
+      <input
+        formControlName="age"
+        required
+        type="date"
+        name="age"
+        class="form-control"
+        id="age"
+        placeholder="{{ age.toDateString }}"
+        [value]="age.toDateString"
+      />
+    </div>
+  </div>
+  <div class="form-row justify-content-center">
+    <div class="form-group col-sm-3">
+      <button id="text" class="btn btn-outline-dark">Abbruch</button>
+    </div>
+    <div class="form-group col-sm-3">
+      <button id="text" class="btn btn-outline-dark" onClick="{onSave}">
+        Save
+      </button>
+    </div>
+  </div>
+</form>

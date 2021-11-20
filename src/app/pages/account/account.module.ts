@@ -5,6 +5,7 @@ import { AccountRoutingModule } from './account-routing.module';
 import { EditComponent } from './edit/edit.component';
 import { PwchangeComponent } from './pwchange/pwchange.component';
 import { AccountComponent } from './account/account.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,6 @@ import { AccountComponent } from './account/account.component';
     AccountComponent,
     // RootComponent,
   ],
-  imports: [CommonModule, AccountRoutingModule],
+  imports: [CommonModule, AccountRoutingModule, ReactiveFormsModule],
 })
 export class AccountModule {}

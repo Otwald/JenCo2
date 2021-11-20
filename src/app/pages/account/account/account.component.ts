@@ -9,12 +9,7 @@ import { AuthService } from '../../auth/_services/auth.service';
   styleUrls: ['./account.component.scss'],
 })
 export class AccountComponent implements OnInit {
-  public userForm = this.fb.group({
-    profile: [''],
-    first: [''],
-    last: [''],
-    age: [],
-  });
+
   user: User;
 
   constructor(private fb: FormBuilder, private auth: AuthService) {
