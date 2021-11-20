@@ -10,6 +10,7 @@ import { ImpressumComponent } from './pages/footer/impressum/impressum.component
 import { HomeComponent } from './pages/home/home.component';
 import { AuthModule } from './pages/auth/auth.module';
 import { AccountModule } from './pages/account/account.module';
+import { AdminModule } from './pages/admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,13 @@ import { AccountModule } from './pages/account/account.module';
     ImpressumComponent,
     HomeComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, AuthModule, AccountModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    AuthModule,
+    AccountModule,
+    AdminModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
