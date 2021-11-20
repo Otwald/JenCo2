@@ -1,1 +1,29 @@
-<p>timeblocks works!</p>
+<div>
+  <ul *ngFor="let item of timeblocks">
+    <li>
+      <h4 className="text-center">
+        <strong>{{ item.name }}</strong>
+      </h4>
+      <p className="text-center">
+        <span className="col-sm-3">
+          <strong>Start:</strong>
+          {{ item.start }}
+        </span>
+        <span className="col-sm-3">
+          <strong>Ende:</strong>
+          {{ item.end }}
+        </span>
+        <span className="col-sm-3">
+          <strong>Spielblock: </strong>
+          {{ item.pnp ? "Ja" : "Nein" }}
+        </span>
+        <!-- <span className="col-sm-3">
+          <strong>Tisch:</strong>
+          {k.block_table.length}/{k.block_max_table}
+        </span> -->
+      </p>
+      <app-create [timeBlock]="item"></app-create>
+    </li>
+  </ul>
+</div>
+<app-create></app-create>

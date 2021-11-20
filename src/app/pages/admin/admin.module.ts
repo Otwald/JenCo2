@@ -6,6 +6,8 @@ import { AdminComponent } from './admin.component';
 import { UsersComponent } from './users/users.component';
 import { TimeblocksComponent } from './timeblocks/timeblocks.component';
 import { GeneralComponent } from './general/general.component';
+import { CreateComponent } from './timeblocks/create/create.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,8 @@ import { GeneralComponent } from './general/general.component';
     UsersComponent,
     TimeblocksComponent,
     GeneralComponent,
+    CreateComponent,
   ],
-  imports: [CommonModule, AdminRoutingModule],
+  imports: [CommonModule, AdminRoutingModule, ReactiveFormsModule],
 })
 export class AdminModule {}
