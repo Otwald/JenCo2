@@ -9,6 +9,7 @@ import { CreateComponent } from './timeblocks/create/create.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdminnavComponent } from 'src/app/layout/adminnav/adminnav.component';
 import { AdminComponent } from './admin.component';
+import { EditComponent } from './general/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { AdminComponent } from './admin.component';
     CreateComponent,
     AdminComponent,
     AdminnavComponent,
+    EditComponent,
   ],
   imports: [CommonModule, AdminRoutingModule, ReactiveFormsModule],
 })

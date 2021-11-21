@@ -1,0 +1,98 @@
+<form className="was-validated" [formGroup]="eventForm">
+  <div className="form-row">
+    <div className="input-group mb-3">
+      <span className="input-group-prepend input-group-text col-sm-3">
+        Event Start
+      </span>
+      <input
+        required
+        className="form-control"
+        type="date"
+        name="e_start"
+        formControlName="start"
+      />
+    </div>
+  </div>
+  <div className="form-row">
+    <div className="input-group mb-3">
+      <span className="input-group-prepend input-group-text col-sm-3">
+        Event End
+      </span>
+      <input
+        required
+        className="form-control"
+        type="date"
+        name="e_end"
+        formControlName="end"
+      />
+    </div>
+  </div>
+  <div className="form-row">
+    <div className="input-group mb-3">
+      <span className="input-group-prepend input-group-text col-sm-3">
+        Event Location
+      </span>
+      <input
+        required
+        className="form-control"
+        type="text"
+        name="e_loc"
+        formControlName="loc"
+      />
+    </div>
+  </div>
+  <div className="form-row">
+    <div className="input-group mb-3">
+      <span className="input-group-prepend input-group-text col-sm-3">
+        Teilnahme Preis
+      </span>
+      <input
+        required
+        min="0"
+        className="form-control"
+        type="number"
+        name="t_price"
+        formControlName="ticketPrice"
+      />
+    </div>
+  </div>
+  <div className="form-row">
+    <div className="input-group mb-3">
+      <span className="input-group-prepend input-group-text col-sm-3">
+        Event Kosten
+      </span>
+      <input
+        required
+        min="0"
+        className="form-control"
+        type="number"
+        name="e_price"
+        formControlName="eventPrice"
+      />
+    </div>
+  </div>
+  <!-- <div className="form-row">
+      <div className="input-group mb-3">
+        <span className="input-group-prepend input-group-text col-sm-3">
+          Discord Webhook
+        </span>
+        <input
+          required
+          min="0"
+          className="form-control"
+          type="text"
+          name="d_hook"
+          onChange={(event) => setDiscordHook(event.target.value)}
+          value={d_hook}
+        />
+      </div>
+    </div> -->
+  <div className="row justify-content-center">
+    <button className="btn btn-outline-dark col-sm-4" (click)="onEditClose()">
+      Abbrechen
+    </button>
+    <button className="btn btn-outline-dark col-sm-4" (click)="onSave()">
+      Speichern
+    </button>
+  </div>
+</form>
