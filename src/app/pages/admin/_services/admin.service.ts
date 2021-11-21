@@ -35,9 +35,9 @@ export class AdminService {
       },
     ]);
     this.onSaveEventSetting({
-      end: new Date(),
+      end: new Date('2021-11-20'),
       loc: '',
-      start: new Date(),
+      start: new Date('2021-11-21'),
       ticketPrice: 0,
       eventPrice: 0,
     } as EventSetting);

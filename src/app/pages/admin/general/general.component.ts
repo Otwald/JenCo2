@@ -27,11 +27,11 @@ export class GeneralComponent implements OnInit {
   setEventItems() {
     this.items = [
       {
-        value: this.eventSetting?.start,
+        value: new Date(this.eventSetting?.start as Date).toDateString(),
         name: 'Event-Start',
       },
       {
-        value: this.eventSetting?.end,
+        value: new Date(this.eventSetting?.end as Date).toDateString(),
         name: 'Event-End',
       },
       {

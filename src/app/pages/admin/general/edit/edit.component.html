@@ -1,4 +1,4 @@
-<form className="was-validated" [formGroup]="eventForm">
+<form className="was-validated" [formGroup]="eventForm" (submit)="onSave()">
   <div className="form-row">
     <div className="input-group mb-3">
       <span className="input-group-prepend input-group-text col-sm-3">
@@ -91,7 +91,11 @@
     <button className="btn btn-outline-dark col-sm-4" (click)="onEditClose()">
       Abbrechen
     </button>
-    <button className="btn btn-outline-dark col-sm-4" (click)="onSave()">
+    <button
+      type="submit"
+      className="btn btn-outline-dark col-sm-4"
+      (click)="onSave()"
+    >
       Speichern
     </button>
   </div>

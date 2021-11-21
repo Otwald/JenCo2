@@ -16,8 +16,8 @@ export class NavComponent implements OnInit {
     },
     {
       route: 'round',
-      title: 'Spielrunden',
-      name: 'Spielrrunden',
+      title: 'Spielerrunden',
+      name: 'Spielerrunden',
       icon: 'box_icon',
     },
     {

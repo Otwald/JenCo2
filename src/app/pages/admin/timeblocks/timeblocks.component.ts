@@ -22,6 +22,11 @@ export class TimeblocksComponent implements OnInit {
     this.timeblocks = this.as.getTimeBlockJson();
   }
 
+  getDateFormate(data?: Date): string {
+    let temp = new Date(data as Date);
+    return temp.toDateString() + ' ' + temp.toLocaleTimeString();
+  }
+
   setselectBlock(id: any): void {
     this.editBlock = false;
     if (id == this.selectBlock) {
