@@ -1,1 +1,214 @@
-<p>general works!</p>
+<!-- div className="col-sm-9">
+      <h4
+        className="text-center"
+        id="data"
+        onClick={(event) => onTabChange(event.target)}
+      >
+        <strong id="data">Event Daten</strong>
+      </h4>
+      {tab == "data" ? (
+        <React.Fragment>
+          {eventEdit ? (
+            <form className="was-validated">
+              <div className="form-row">
+                <div className="input-group mb-3">
+                  <span className="input-group-prepend input-group-text col-sm-3">
+                    Event Start
+                  </span>
+                  <input
+                    required
+                    className="form-control"
+                    type="date"
+                    name="e_start"
+                    onChange={(event) => setStart(event.target.value)}
+                    value={useDate(e_start)}
+                  />
+                </div>
+              </div>
+              <div className="form-row">
+                <div className="input-group mb-3">
+                  <span className="input-group-prepend input-group-text col-sm-3">
+                    Event End
+                  </span>
+                  <input
+                    required
+                    className="form-control"
+                    type="date"
+                    name="e_end"
+                    onChange={(event) => setEnd(event.target.value)}
+                    value={useDate(e_end)}
+                  />
+                </div>
+              </div>
+              <div className="form-row">
+                <div className="input-group mb-3">
+                  <span className="input-group-prepend input-group-text col-sm-3">
+                    Event Location
+                  </span>
+                  <input
+                    required
+                    className="form-control"
+                    type="text"
+                    name="e_loc"
+                    onChange={(event) => setLoc(event.target.value)}
+                    value={e_loc}
+                  />
+                </div>
+              </div>
+              <div className="form-row">
+                <div className="input-group mb-3">
+                  <span className="input-group-prepend input-group-text col-sm-3">
+                    Teilnahme Preis
+                  </span>
+                  <input
+                    required
+                    min="0"
+                    className="form-control"
+                    type="number"
+                    name="t_price"
+                    onChange={(event) => setTicketPrice(event.target.value)}
+                    value={t_price}
+                  />
+                </div>
+              </div>
+              <div className="form-row">
+                <div className="input-group mb-3">
+                  <span className="input-group-prepend input-group-text col-sm-3">
+                    Event Kosten
+                  </span>
+                  <input
+                    required
+                    min="0"
+                    className="form-control"
+                    type="number"
+                    name="e_price"
+                    onChange={(event) => setEventPrice(event.target.value)}
+                    value={e_price}
+                  />
+                </div>
+              </div>
+              <div className="form-row">
+                <div className="input-group mb-3">
+                  <span className="input-group-prepend input-group-text col-sm-3">
+                    Discord Webhook
+                  </span>
+                  <input
+                    required
+                    min="0"
+                    className="form-control"
+                    type="text"
+                    name="d_hook"
+                    onChange={(event) => setDiscordHook(event.target.value)}
+                    value={d_hook}
+                  />
+                </div>
+              </div>
+              <div className="row justify-content-center">
+                <button
+                  className="btn btn-outline-dark col-sm-4"
+                  onClick={() => {
+                    setEventEdit(false);
+                    preventDefault();
+                  }}
+                >
+                  Abbrechen
+                </button>
+                <button
+                  className="btn btn-outline-dark col-sm-4"
+                  onClick={onSave}
+                >
+                  Speichern
+                </button>
+              </div>
+            </form>
+          ) : ( -->
+<div className="text-left">
+  <!-- <div className="row">
+    <label className="col-sm-4">Event Start</label>
+    <div className="col-sm-8 text-muted">{e_start}</div>
+  </div>
+  <div className="row">
+    <label className="col-sm-4">Event End</label>
+    <div className="text-muted col-sm-8">{e_end}</div>
+  </div>
+  <div className="row">
+    <label className="col-sm-4">Event Location</label>
+    <div className="text-muted col-sm-8">{e_loc}</div>
+  </div>
+  <div className="row">
+    <label className="col-sm-4">Teilnahme Preis</label>
+    <div className="text-muted col-sm-8">{t_price}</div>
+  </div>
+  <div className="row">
+    <label className="col-sm-4">Event Kosten</label>
+    <div className="text-muted col-sm-8">{e_price}</div>
+  </div> -->
+  <div className="row">
+    <label className="col-sm-4">Event Rechnung</label>
+    <div className="text-muted col-sm-8">
+      <!-- {(eventPay / e_price) * 100}% bezahlt -->
+    </div>
+  </div>
+  <div className="row justify-content-center">
+    <button className="btn btn-outline-dark col-sm-5" (click)="onEventEdit()">
+      Edit
+    </button>
+  </div>
+</div>
+<!-- )}
+        </React.Fragment>
+      ) : (
+        ""
+      )}
+      <h4
+        className="text-center"
+        onClick={(event) => onTabChange(event.target)}
+      >
+        <strong id="tpl">Page Templates</strong>
+      </h4>
+      {tab == "tpl" ? (
+        <React.Fragment>
+          <button
+            onClick={() => {
+              setTemplate(land_page);
+              setTemplateTab("lp");
+            }}
+          >
+            LandingPage
+          </button>{" "}
+          <button
+            onClick={() => {
+              setTemplate(welcome_email);
+              setTemplateTab("we");
+            }}
+          >
+            WelcomeEmail
+          </button>{" "}
+          <button
+            onClick={() => {
+              setTemplate(confirm_email);
+              setTemplateTab("ce");
+            }}
+          >
+            ConfirmationEmail
+          </button>
+          {tpl_tab == "" ? (
+            ""
+          ) : (
+            <>
+              <div className="col-sm-9">
+                <ReactQuill
+                  required
+                  value={tpl}
+                  onChange={(value) => setTemplate(value)}
+                  // placeholder={props.round_create.round_desc}
+                />
+              </div>
+              <button onClick={() => onSubmitTpl()}>Submit</button>
+            </>
+          )}
+        </React.Fragment>
+      ) : (
+        ""
+      )}
+    </div> -->

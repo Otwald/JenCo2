@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { EventSetting } from '../../_shared/eventsetting';
 import { Timeblock } from '../../_shared/timeblock';
 
 @Injectable({
@@ -33,13 +34,24 @@ export class AdminService {
         max_table: 5,
       },
     ]);
+    this.onSaveEventSetting({
+      end: new Date(),
+      loc: '',
+      start: new Date(),
+      ticketPrice: 0,
+      eventPrice: 0,
+    } as EventSetting);
   }
 
   private timeBlocksSource = new Subject<Timeblock[]>();
   public timeBlocks$: Observable<Timeblock[]> =
     this.timeBlocksSource.asObservable();
 
-  onSaveTimeBlock(data: Timeblock) {
+  private eventSettingSource = new Subject<EventSetting>();
+  public eventSetting$: Observable<EventSetting> =
+    this.eventSettingSource.asObservable();
+
+  onSaveTimeBlock(data: Timeblock): void {
     let timeBlocks = this.getTimeBlockJson();
     if (data.id) {
       timeBlocks.forEach((element, index) => {
@@ -56,8 +68,20 @@ export class AdminService {
     this.setTimeBlockJson(timeBlocks);
   }
 
+  onSaveEventSetting(data: EventSetting): void {
+    this.setEventSettingJson(data);
+  }
+
+  private setEventSettingJson(data: EventSetting): void {
+    this.eventSettingSource.next(data);
+    localStorage.setItem('event_json', JSON.stringify(data));
+  }
+  getEventSettingJson(): EventSetting {
+    return JSON.parse(localStorage.getItem('event_json') as string);
+  }
+
   //TODO change to Api Request
-  setTimeBlockJson(data: Array<Timeblock>) {
+  private setTimeBlockJson(data: Array<Timeblock>): void {
     this.timeBlocksSource.next(data);
     localStorage.setItem('time_jsons', JSON.stringify(data));
   }
