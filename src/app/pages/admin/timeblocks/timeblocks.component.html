@@ -1,29 +1,79 @@
 <div>
   <ul *ngFor="let item of timeblocks">
-    <li>
-      <h4 className="text-center">
-        <strong>{{ item.name }}</strong>
-      </h4>
-      <p className="text-center">
-        <span className="col-sm-3">
-          <strong>Start:</strong>
-          {{ item.start }}
-        </span>
-        <span className="col-sm-3">
-          <strong>Ende:</strong>
-          {{ item.end }}
-        </span>
-        <span className="col-sm-3">
-          <strong>Spielblock: </strong>
-          {{ item.pnp ? "Ja" : "Nein" }}
-        </span>
-        <!-- <span className="col-sm-3">
-          <strong>Tisch:</strong>
-          {k.block_table.length}/{k.block_max_table}
-        </span> -->
-      </p>
-      <app-create [timeBlock]="item"></app-create>
-    </li>
+    <ng-container
+      *ngIf="
+        item.id === this.selectBlock && this.editBlock;
+        then editTrue;
+        else editFalse
+      "
+    >
+    </ng-container>
+    <ng-template #editTrue>
+      <li>
+        <app-create [timeBlock]="item" (editClose)="onEditEnd()"></app-create>
+      </li>
+    </ng-template>
+    <ng-template #editFalse>
+      <li (click)="setselectBlock(item.id)">
+        <h4 className="text-center">
+          <strong>{{ item.name }}</strong>
+        </h4>
+        <p className="text-center">
+          <span className="col-sm-3">
+            <strong>Start:</strong>
+            {{ item.start }}
+          </span>
+          <span className="col-sm-3">
+            <strong>Ende:</strong>
+            {{ item.end }}
+          </span>
+          <span className="col-sm-3">
+            <strong>Spielblock: </strong>
+            {{ item.pnp ? "Ja" : "Nein" }}
+          </span>
+          <!-- <span className="col-sm-3">
+            <strong>Tisch:</strong>
+            {k.block_table.length}/{k.block_max_table}
+          </span> -->
+        </p>
+      </li>
+      <div *ngIf="this.selectBlock == item.id">
+        <div className="row justify-content-center">
+          <!-- <button
+            id="text"
+            className="btn btn-outline-dark col-sm-4"
+            onClick={() => this.onBlockDelete(k)}
+          >
+            Löschen
+          </button> -->
+          <button
+            id="text"
+            className="btn btn-outline-dark col-sm-4"
+            (click)="this.editBlock = true"
+          >
+            Editieren
+          </button>
+        </div>
+      </div>
+    </ng-template>
   </ul>
 </div>
-<app-create></app-create>
+<ng-container
+  *ngIf="this.selectBlock === 0 && this.editBlock; then newTrue; else newFalse"
+>
+</ng-container>
+
+<ng-template #newTrue>
+  <app-create (editClose)="onEditEnd()"></app-create>
+</ng-template>
+<ng-template #newFalse>
+  <div className="row justify-content-center">
+    <button
+      id="text"
+      className="btn btn-outline-dark col-sm-4"
+      (click)="this.editBlock = true; this.selectBlock = 0"
+    >
+      Neuer Block
+    </button>
+  </div></ng-template
+>

@@ -1,13 +1,6 @@
 <div className="welcome">
-  <div *ngFor="let item of items">
-    <button
-      [routerLink]="[item.route]"
-      routerLinkActive="active"
-      (click)="setTitle(item.title)"
-    >
-      <i class="[item.icon]"></i>
-      <span>{{ item.name }}</span>
-    </button>
+  <div>
+    <app-adminnav></app-adminnav>
   </div>
   <div>
     <router-outlet></router-outlet>

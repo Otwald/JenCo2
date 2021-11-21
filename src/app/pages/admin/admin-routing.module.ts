@@ -10,7 +10,7 @@ const routes: Routes = [
     path: 'admin',
     component: AdminComponent,
     children: [
-      { path: '', component: AdminComponent },
+      { path: '', redirectTo: 'root', pathMatch: 'full' },
       { path: 'general', component: GeneralComponent },
       { path: 'users', component: UsersComponent },
       { path: 'timeblocks', component: TimeblocksComponent },

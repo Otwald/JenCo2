@@ -1,5 +1,9 @@
 <div className="row justify-content-center">
-  <form className="col-sm-7 was-validated" [formGroup]="tbForm">
+  <form
+    className="col-sm-7 was-validated"
+    [formGroup]="tbForm"
+    (submit)="onSave()"
+  >
     <div className="form-row">
       <div className="input-group mb-3">
         <span className="input-group-prepend input-group-text col-sm-3">
@@ -158,18 +162,19 @@
     <div className="form-row justify-content-center">
       <button
         id="text"
+        type="submit"
         className="btn btn-outline-dark col-sm-4"
-        onClick="{props.onCancelButton}"
-      >
-        Abbrechen
-      </button>
-      <button
-        id="text"
-        className="btn btn-outline-dark col-sm-4"
-        onClick="{this.onBlockSave}"
+        (click)="onSave()"
       >
         Speichern
       </button>
     </div>
   </form>
+  <button
+    id="text"
+    className="btn btn-outline-dark col-sm-4"
+    (click)="onEmitClose()"
+  >
+    Abbrechen
+  </button>
 </div>

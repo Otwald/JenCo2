@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Timeblock } from 'src/app/pages/_shared/timeblock';
+import { AdminService } from '../../_services/admin.service';
 
 @Component({
   selector: 'app-create',
@@ -9,6 +10,7 @@ import { Timeblock } from 'src/app/pages/_shared/timeblock';
 })
 export class CreateComponent implements OnInit {
   @Input() timeBlock: Timeblock = {};
+  @Output() editClose = new EventEmitter();
   public tbForm = this.fb.group({
     id: [],
     name: [''],
@@ -17,12 +19,20 @@ export class CreateComponent implements OnInit {
     end: [],
     max_table: [5],
   });
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private as: AdminService) {}
 
   ngOnInit(): void {
     if (this.timeBlock.id) {
-      console.log(this.timeBlock);
       this.tbForm.setValue(this.timeBlock);
     }
+  }
+
+  onSave(): void {
+    this.as.onSaveTimeBlock(this.tbForm.value as Timeblock);
+    this.onEmitClose();
+  }
+
+  onEmitClose(): void {
+    this.editClose.emit();
   }
 }
