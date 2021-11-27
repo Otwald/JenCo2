@@ -13,6 +13,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { AuthModule } from './pages/auth/auth.module';
 import { AccountModule } from './pages/account/account.module';
 import { AdminModule } from './pages/admin/admin.module';
+import { RoundModule } from './pages/round/round.module';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { AdminModule } from './pages/admin/admin.module';
     AuthModule,
     AccountModule,
     AdminModule,
+    RoundModule,
     BrowserAnimationsModule,
     MatNativeDateModule,
   ],
