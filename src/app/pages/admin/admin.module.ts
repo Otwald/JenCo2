@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { UsersComponent } from './users/users.component';
@@ -21,6 +23,12 @@ import { EditComponent } from './general/edit/edit.component';
     AdminnavComponent,
     EditComponent,
   ],
-  imports: [CommonModule, AdminRoutingModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    AdminRoutingModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+  ],
 })
 export class AdminModule {}

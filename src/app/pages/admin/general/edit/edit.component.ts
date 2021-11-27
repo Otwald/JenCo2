@@ -18,13 +18,17 @@ export class EditComponent implements OnInit {
     ticketPrice: [],
     eventPrice: [],
   });
+  public test = '';
   constructor(private fb: FormBuilder, private as: AdminService) {}
 
   ngOnInit(): void {
     if (this.eventSettings) {
-      console.log(this.eventSettings);
       this.eventForm.setValue(this.eventSettings as EventSetting);
     }
+    this.eventForm.valueChanges.subscribe((form) => {
+      this.eventForm.value.start = new Date(form.start);
+      this.eventForm.value.end = new Date(form.end);
+    });
   }
 
   onSave(): void {

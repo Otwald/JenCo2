@@ -1,32 +1,20 @@
 <form className="was-validated" [formGroup]="eventForm" (submit)="onSave()">
-  <div className="form-row">
-    <div className="input-group mb-3">
-      <span className="input-group-prepend input-group-text col-sm-3">
-        Event Start
-      </span>
-      <input
-        required
-        className="form-control"
-        type="date"
-        name="e_start"
-        formControlName="start"
-      />
-    </div>
-  </div>
-  <div className="form-row">
-    <div className="input-group mb-3">
-      <span className="input-group-prepend input-group-text col-sm-3">
-        Event End
-      </span>
-      <input
-        required
-        className="form-control"
-        type="date"
-        name="e_end"
-        formControlName="end"
-      />
-    </div>
-  </div>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter a date range</mat-label>
+    <mat-date-range-input [rangePicker]="picker">
+      <input matStartDate formControlName="start" placeholder="Start date" />
+      <input matEndDate formControlName="end" placeholder="End date" />
+    </mat-date-range-input>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+    <mat-error
+      *ngIf="this.eventForm.controls.start.hasError('matStartDateInvalid')"
+      >Invalid start date</mat-error
+    >
+    <mat-error *ngIf="this.eventForm.controls.end.hasError('matEndDateInvalid')"
+      >Invalid end date</mat-error
+    >
+  </mat-form-field>
   <div className="form-row">
     <div className="input-group mb-3">
       <span className="input-group-prepend input-group-text col-sm-3">
