@@ -89,11 +89,10 @@ export class CreateComponent implements OnInit {
   }
 
   createTimeSetting(start: Date, end: Date): void {
-    let week = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
     for (let i = start; i <= end; i.setDate(i.getDate() + 1)) {
       this.timeSettings?.push({
         value: new Date(i.toDateString()),
-        name: week[i.getDay()],
+        name: i.toLocaleString('De-DE', { weekday: 'short' }),
       });
     }
   }

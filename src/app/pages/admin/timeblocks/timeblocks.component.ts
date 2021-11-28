@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Timeblock } from '../../_shared/timeblock';
+import { GeneralService } from '../../_shared/_service/general.service';
 import { AdminService } from '../_services/admin.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class TimeblocksComponent implements OnInit {
   public timeblocks: Array<Timeblock> = [];
   public selectBlock: number = 0;
   public editBlock: boolean = false;
-  constructor(private as: AdminService) {
+  constructor(private as: AdminService, private gS: GeneralService) {
     this.as.getTimeBlockJson();
     this.as.timeBlocks$.subscribe((next) => {
       this.timeblocks = next;
@@ -23,8 +24,7 @@ export class TimeblocksComponent implements OnInit {
   }
 
   getDateFormate(data?: Date): string {
-    let temp = new Date(data as Date);
-    return temp.toDateString() + ' ' + temp.toLocaleTimeString();
+    return this.gS.getDateFormate(data);
   }
 
   setselectBlock(id: any): void {

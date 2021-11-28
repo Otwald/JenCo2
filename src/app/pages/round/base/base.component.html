@@ -1,1 +1,56 @@
-<p>base works!</p>
+<div>
+  <div className="row" *ngFor="let block of this.timeBlocks">
+    <div className="col-sm time_block_container">
+      <div
+        className="row list-group-item time_block"
+        onClick="blockTabControll(block.id)"
+        id="time_block"
+      >
+        <h4 className="text-center">
+          <strong>{{ block.name }}</strong>
+        </h4>
+        <p className="text-center">
+          <span className="col-sm-3">
+            <strong>Start:</strong>
+            {{ getDateFormate(block.start) }}
+          </span>
+          <span className="col-sm-3">
+            <strong>Ende:</strong>
+            {{ getDateFormate(block.end) }}
+          </span>
+          <span className="col-sm-3">
+            <strong>Tisch:</strong>
+            {{ getTableCount(block.id) }}/{{ block.max_table }}
+          </span>
+        </p>
+        <div *ngIf=""></div>
+        <!-- {{/* <h4 className="col-sm-4">{{block.block_name}}</h4>
+                        <p>
+                            <div className='col-sm-3'>
+                                <label className='time_block'>Tische</label> <a className='text-muted' >{{block.block_table.length}}/{{block.block_max_table}}</a>
+                            </div>
+                        </p> */}}
+          </div>
+          {{blockTab === block._id ? <div className="row">{{round}}</div> : ""}} -->
+        <!-- <div className="row justify-content-center">
+            {blockTab === block._id ? (
+              <i
+                onClick={() => blockTabControll(block._id)}
+                className="arrow_up_circle"
+              ></i>
+            ) : (
+              <i
+                onClick={() => blockTabControll(block._id)}
+                className="arrow_down_circle"
+              ></i>
+            )}
+          </div> -->
+      </div>
+    </div>
+    <div className="row justify-content-center">
+      <button id="text" className="btn btn-outline-dark col-sm-4">
+        Neue Runde Hinzufügen
+      </button>
+    </div>
+  </div>
+</div>
