@@ -14,6 +14,17 @@ export class BaseComponent implements OnInit {
   public timeBlocks: Timeblock[] = [];
   public rounds?;
   public selectBlock: number = 0;
+  public buildTB = [
+    { name: 'Start', value: 'start' },
+    { name: 'Ende', value: 'end' },
+    { name: 'Tisch', value: 'table' },
+  ];
+  public buildRound = [
+    { name: 'Runden Name', value: 'name' },
+    { name: 'Setting', value: 'setting' },
+    { name: 'Regelwerk', value: 'ruleset' },
+    { name: 'Spieler', value: 'player' },
+  ];
 
   constructor(
     private rS: RoundService,
@@ -29,6 +40,23 @@ export class BaseComponent implements OnInit {
 
   ngOnInit(): void {
     this.timeBlocks = this.rS.getTimeBlockJson();
+  }
+
+  /**
+   * Small Helper Function for the Loop in HTMl to build values
+   * @param block
+   * @param cap Captalisation String
+   * @returns
+   */
+  buildTBValues(block: Timeblock, cap: string): string {
+    if (cap === 'start' || cap === 'end') {
+      return this.getDateFormate(block[cap]);
+    }
+    return `${this.getTableCount(block.id)}/${block.max_table}`;
+  }
+
+  buildRoundValues(round: Round, cap: string): string {
+    return (round as any)[cap];
   }
 
   getDateFormate(data?: Date): string {

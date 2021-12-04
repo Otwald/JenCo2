@@ -10,17 +10,9 @@
           <strong>{{ block.name }}</strong>
         </h4>
         <p className="text-center">
-          <span className="col-sm-3">
-            <strong>Start:</strong>
-            {{ getDateFormate(block.start) }}
-          </span>
-          <span className="col-sm-3">
-            <strong>Ende:</strong>
-            {{ getDateFormate(block.end) }}
-          </span>
-          <span className="col-sm-3">
-            <strong>Tisch:</strong>
-            {{ getTableCount(block.id) }}/{{ block.max_table }}
+          <span *ngFor="let cap of this.buildTB" className="col-sm-3">
+            <strong>{{ cap.name }}:</strong>
+            {{ buildTBValues(block, cap.value) }}
           </span>
         </p>
       </div>
@@ -28,22 +20,10 @@
         <div *ngFor="let round of this.rounds[block.id]">
           <div className="text-left round text-break">
             <div className="roundZoom" (click)="selectRound(round.id)">
-              <div className="row">
-                <label className="col-sm-4">Runden Name</label>
-                <div className="col-sm-8 text-muted">{{ round.name }}</div>
-              </div>
-              <div className="row">
-                <label className="col-sm-4">Setting</label>
-                <div className="col-sm-8 text-muted">{{ round.setting }}</div>
-              </div>
-              <div className="row">
-                <label className="col-sm-4">Regelwerk</label>
-                <div className="col-sm-8 text-muted">{{ round.ruleset }}</div>
-              </div>
-              <div className="row">
-                <label className="col-sm-4">Spieler</label>
+              <div className="row" *ngFor="let item of this.buildRound">
+                <label className="col-sm-4">{{ item.name }}</label>
                 <div className="col-sm-8 text-muted">
-                  <!-- {{ round.curr_pl }}/{{ round.max_online_pl }} -->
+                  {{ this.buildRoundValues(round, item.value) }}
                 </div>
               </div>
             </div>
