@@ -4,9 +4,9 @@ export class Round {
   name?: string;
   setting?: string;
   ruleset?: string;
-  dec?: string;
+  desc?: string;
   table_num?: number;
-  own_char?: boolean;
+  premade_char?: boolean;
   max_online_pl?: number;
   max_pl?: number;
   gm?: string;

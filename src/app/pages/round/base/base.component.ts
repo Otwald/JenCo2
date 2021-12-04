@@ -13,6 +13,7 @@ import { RoundService } from '../_services/round.service';
 export class BaseComponent implements OnInit {
   public timeBlocks: Timeblock[] = [];
   public rounds?;
+  public newRound: boolean = false;
   public selectBlock: number = 0;
   public buildTB = [
     { name: 'Start', value: 'start' },

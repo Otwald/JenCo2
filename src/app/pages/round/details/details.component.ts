@@ -45,9 +45,9 @@ export class DetailsComponent implements OnInit {
       { name: 'Teilnehmer', value: this.round?.players?.toString() as string },
       {
         name: 'Vorgefertigte Charaktere',
-        value: this.round?.own_char ? 'Nein' : 'Ja',
+        value: this.round?.premade_char ? 'Ja' : 'Nein',
       },
-      { name: 'Rundenbeschreibung', value: this.round?.dec as string },
+      { name: 'Rundenbeschreibung', value: this.round?.desc as string },
     ];
   }
 

@@ -59,10 +59,21 @@
           </div> -->
       </div>
     </div>
+  </div>
+  <ng-container *ngIf="this.newRound; then newTrue; else newFalse">
+  </ng-container>
+  <ng-template #newTrue>
+    <app-edit></app-edit>
+  </ng-template>
+  <ng-template #newFalse>
     <div className="row justify-content-center">
-      <button id="text" className="btn btn-outline-dark col-sm-4">
+      <button
+        id="text"
+        className="btn btn-outline-dark col-sm-4"
+        (click)="this.newRound = true"
+      >
         Neue Runde Hinzufügen
       </button>
-    </div>
-  </div>
+    </div></ng-template
+  >
 </div>
