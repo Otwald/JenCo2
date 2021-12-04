@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BaseComponent } from './base/base.component';
+import { DetailsComponent } from './details/details.component';
 import { RoundComponent } from './round.component';
 
 const routes: Routes = [
@@ -9,7 +10,7 @@ const routes: Routes = [
     component: RoundComponent,
     children: [
       { path: '', component: BaseComponent },
-      // { path: 'general', component: GeneralComponent },
+      { path: 'details/:id', component: DetailsComponent },
       // { path: 'users', component: UsersComponent },
       // { path: 'timeblocks', component: TimeblocksComponent },
     ],

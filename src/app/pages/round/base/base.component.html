@@ -3,7 +3,7 @@
     <div className="col-sm time_block_container">
       <div
         className="row list-group-item time_block"
-        onClick="blockTabControll(block.id)"
+        (click)="setSelectBlock(block.id)"
         id="time_block"
       >
         <h4 className="text-center">
@@ -23,7 +23,39 @@
             {{ getTableCount(block.id) }}/{{ block.max_table }}
           </span>
         </p>
-        <div *ngIf=""></div>
+      </div>
+      <div *ngIf="this.selectBlock === block.id">
+        <div *ngFor="let round of this.rounds[block.id]">
+          <div className="text-left round text-break">
+            <div className="roundZoom" (click)="selectRound(round.id)">
+              <div className="row">
+                <label className="col-sm-4">Runden Name</label>
+                <div className="col-sm-8 text-muted">{{ round.name }}</div>
+              </div>
+              <div className="row">
+                <label className="col-sm-4">Setting</label>
+                <div className="col-sm-8 text-muted">{{ round.setting }}</div>
+              </div>
+              <div className="row">
+                <label className="col-sm-4">Regelwerk</label>
+                <div className="col-sm-8 text-muted">{{ round.ruleset }}</div>
+              </div>
+              <div className="row">
+                <label className="col-sm-4">Spieler</label>
+                <div className="col-sm-8 text-muted">
+                  <!-- {{ round.curr_pl }}/{{ round.max_online_pl }} -->
+                </div>
+              </div>
+            </div>
+            <div
+              className="row justify-content-center"
+              onClick="{() => onExtendRound(k)}"
+            >
+              <i className="maximize_icon"></i>
+            </div>
+          </div>
+        </div>
+
         <!-- {{/* <h4 className="col-sm-4">{{block.block_name}}</h4>
                         <p>
                             <div className='col-sm-3'>

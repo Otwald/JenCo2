@@ -19,7 +19,7 @@ export class RoundService {
       own_char: false,
       max_online_pl: 0,
       max_pl: 5,
-      gm_id: 1,
+      gm: 'Tom',
       players: [],
     });
   }

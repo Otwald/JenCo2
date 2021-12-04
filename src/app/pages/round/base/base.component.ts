@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Round } from '../../_shared/round';
 import { Timeblock } from '../../_shared/timeblock';
 import { GeneralService } from '../../_shared/_service/general.service';
@@ -12,7 +13,14 @@ import { RoundService } from '../_services/round.service';
 export class BaseComponent implements OnInit {
   public timeBlocks: Timeblock[] = [];
   public rounds?;
-  constructor(private rS: RoundService, private gS: GeneralService) {
+  public selectBlock: number = 0;
+
+  constructor(
+    private rS: RoundService,
+    private gS: GeneralService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
     this.rounds = this.rS.getRoundJson();
     this.rS.round$.subscribe((data) => {
       this.rounds = data;
@@ -28,6 +36,21 @@ export class BaseComponent implements OnInit {
   }
 
   getTableCount(id?: number): number {
-    return this.rounds ? this.rounds[id as number].length : 0;
+    if (!this.rounds[id as number]) {
+      return 0;
+    }
+    return this.rounds[id as number].length;
+  }
+
+  setSelectBlock(id?: number): void {
+    if (id === this.selectBlock) {
+      this.selectBlock = 0;
+      return;
+    }
+    this.selectBlock = id as number;
+  }
+
+  selectRound(id?: number) {
+    this.router.navigate(['details', id], { relativeTo: this.route });
   }
 }

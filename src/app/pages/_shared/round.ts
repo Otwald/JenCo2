@@ -9,7 +9,7 @@ export class Round {
   own_char?: boolean;
   max_online_pl?: number;
   max_pl?: number;
-  gm_id?: number;
+  gm?: string;
   players?: string[];
 
   constructor(blockId: number) {
