@@ -14,7 +14,7 @@ export class RoundService {
       name: 'Test',
       setting: 'Test',
       ruleset: 'Test',
-      des: 'Test',
+      dec: 'Test',
       table_num: 1,
       own_char: false,
       max_online_pl: 0,
@@ -31,7 +31,15 @@ export class RoundService {
   //   this.timeBlocksSource.asObservable();
 
   private roundSource = new Subject<Round[]>();
+  private selectBlockSource = new Subject<Number>();
   public round$: Observable<Round[]> = this.roundSource.asObservable();
+  public select$: Observable<Number> = this.selectBlockSource.asObservable();
+  public selectBlock: number = 0;
+
+  public setSeclectBlock(id: number) {
+    this.selectBlock = id;
+    this.selectBlockSource.next(id);
+  }
 
   //TODO change to Api Request
   private setRoundJson(data: Round): void {

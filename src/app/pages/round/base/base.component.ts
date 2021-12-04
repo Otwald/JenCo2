@@ -40,6 +40,10 @@ export class BaseComponent implements OnInit {
 
   ngOnInit(): void {
     this.timeBlocks = this.rS.getTimeBlockJson();
+    this.rS.select$.subscribe((data) => {
+      this.selectBlock = data as number;
+    });
+    this.selectBlock = this.rS.selectBlock;
   }
 
   /**
@@ -55,6 +59,12 @@ export class BaseComponent implements OnInit {
     return `${this.getTableCount(block.id)}/${block.max_table}`;
   }
 
+  /**
+   * Small Helper Function for the Loop in HTMl to build ValueStrings
+   * @param round
+   * @param cap
+   * @returns
+   */
   buildRoundValues(round: Round, cap: string): string {
     return (round as any)[cap];
   }
@@ -72,10 +82,10 @@ export class BaseComponent implements OnInit {
 
   setSelectBlock(id?: number): void {
     if (id === this.selectBlock) {
-      this.selectBlock = 0;
+      this.rS.setSeclectBlock(0);
       return;
     }
-    this.selectBlock = id as number;
+    this.rS.setSeclectBlock(id as number);
   }
 
   selectRound(id?: number) {

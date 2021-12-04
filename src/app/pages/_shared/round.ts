@@ -4,7 +4,7 @@ export class Round {
   name?: string;
   setting?: string;
   ruleset?: string;
-  des?: string;
+  dec?: string;
   table_num?: number;
   own_char?: boolean;
   max_online_pl?: number;

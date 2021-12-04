@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BaseComponent } from './base/base.component';
 import { DetailsComponent } from './details/details.component';
+import { EditComponent } from './edit/edit.component';
 import { RoundComponent } from './round.component';
 
 const routes: Routes = [
@@ -11,7 +12,7 @@ const routes: Routes = [
     children: [
       { path: '', component: BaseComponent },
       { path: 'details/:id', component: DetailsComponent },
-      // { path: 'users', component: UsersComponent },
+      { path: 'edit', component: EditComponent },
       // { path: 'timeblocks', component: TimeblocksComponent },
     ],
   },
