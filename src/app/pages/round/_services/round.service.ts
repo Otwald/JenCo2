@@ -43,8 +43,10 @@ export class RoundService {
 
   //TODO change to Api Request
   public setRoundJson(data: Round): void {
-    data.id = this.index;
-    this.index++;
+    if (!data.id) {
+      data.id = this.index;
+      this.index++;
+    }
     if (!data.players) data.players = [];
     let roundObject = this.getRoundJson();
     if (roundObject !== null) {
@@ -52,9 +54,8 @@ export class RoundService {
       if (rounds) {
         let ind;
         rounds.map((round, index) => {
-          if (round.id == data.id) {
-            ind = index;
-          }
+          if (round.id != data.id) return;
+          ind = index;
         });
         if (ind) {
           rounds[ind] = data;

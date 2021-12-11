@@ -26,6 +26,15 @@ export class BaseComponent implements OnInit {
     { name: 'Regelwerk', value: 'ruleset' },
     { name: 'Spieler', value: 'player' },
   ];
+  //TODO replace with API response
+  public userOverView: { [index: string]: { [ind: number]: number[] } } = {
+    gm: {
+      1: [1],
+    },
+    join: {
+      1: [1],
+    },
+  };
 
   constructor(
     private rS: RoundService,
@@ -45,6 +54,10 @@ export class BaseComponent implements OnInit {
       this.selectBlock = data as number;
     });
     this.selectBlock = this.rS.selectBlock;
+  }
+
+  onEdit(id?: number) {
+    this.router.navigate(['edit', id], { relativeTo: this.route });
   }
 
   /**

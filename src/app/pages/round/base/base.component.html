@@ -27,6 +27,43 @@
                 </div>
               </div>
             </div>
+            <ng-container
+              *ngIf="
+                this.userOverView['join'][block.id]?.includes(round.id);
+                then inRound;
+                else notRound
+              "
+            >
+            </ng-container>
+            <ng-template #inRound>
+              <ng-container
+                *ngIf="
+                  this.userOverView['gm'][block.id]?.includes(round.id);
+                  then isGM;
+                  else notGM
+                "
+              >
+              </ng-container>
+              <ng-template #isGM>
+                <button (click)="onEdit(round.id)">Ändern</button>
+                <button>Löschen</button>
+              </ng-template>
+              <ng-template #notGM> <button>Austreten</button></ng-template>
+            </ng-template>
+            <ng-template #notRound>
+              <ng-container
+                *ngIf="
+                  this.userOverView['join'][block.id];
+                  then inBlock;
+                  else notBlock
+                "
+              >
+              </ng-container>
+              <ng-template #inBlock>
+                <button disabled>Runde für diesen Block schon gewählt</button>
+              </ng-template>
+              <ng-template #notBlock> <button>Beitreten</button>> </ng-template>
+            </ng-template>
             <div
               className="row justify-content-center"
               onClick="{() => onExtendRound(k)}"
@@ -35,13 +72,7 @@
             </div>
           </div>
         </div>
-
-        <!-- {{/* <h4 className="col-sm-4">{{block.block_name}}</h4>
-                        <p>
-                            <div className='col-sm-3'>
-                                <label className='time_block'>Tische</label> <a className='text-muted' >{{block.block_table.length}}/{{block.block_max_table}}</a>
-                            </div>
-                        </p> */}}
+        <!-- 
           </div>
           {{blockTab === block._id ? <div className="row">{{round}}</div> : ""}} -->
         <!-- <div className="row justify-content-center">
@@ -63,7 +94,7 @@
   <ng-container *ngIf="this.newRound; then newTrue; else newFalse">
   </ng-container>
   <ng-template #newTrue>
-    <app-edit></app-edit>
+    <app-edit (editClose)="this.newRound = false"></app-edit>
   </ng-template>
   <ng-template #newFalse>
     <div className="row justify-content-center">

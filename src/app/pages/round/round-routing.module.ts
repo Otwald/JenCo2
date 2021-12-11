@@ -12,7 +12,7 @@ const routes: Routes = [
     children: [
       { path: '', component: BaseComponent },
       { path: 'details/:id', component: DetailsComponent },
-      { path: 'edit', component: EditComponent },
+      { path: 'edit/:id', component: EditComponent },
       // { path: 'timeblocks', component: TimeblocksComponent },
     ],
   },
