@@ -7,9 +7,10 @@ import { Timeblock } from '../../_shared/timeblock';
   providedIn: 'root',
 })
 export class RoundService {
+  //TODO remove with api request
+  private index: number = 1;
   constructor() {
     this.setRoundJson({
-      id: 1,
       block_id: 1,
       name: 'Test',
       setting: 'Test',
@@ -20,7 +21,6 @@ export class RoundService {
       max_online_pl: 0,
       max_pl: 5,
       gm: 'Tom',
-      players: [],
     });
   }
 
@@ -42,7 +42,10 @@ export class RoundService {
   }
 
   //TODO change to Api Request
-  private setRoundJson(data: Round): void {
+  public setRoundJson(data: Round): void {
+    data.id = this.index;
+    this.index++;
+    if (!data.players) data.players = [];
     let roundObject = this.getRoundJson();
     if (roundObject !== null) {
       let rounds: Round[] = roundObject[data.block_id];
@@ -56,6 +59,7 @@ export class RoundService {
         if (ind) {
           rounds[ind] = data;
         } else {
+          data.table_num = rounds.length + 1;
           rounds.push(data);
         }
       } else {

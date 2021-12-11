@@ -38,6 +38,12 @@ export class EditComponent implements OnInit {
     { name: 'Ja', value: true },
     { name: 'Nein', value: false },
   ];
+  // TODO fill with response from API, Form = {name:timeBlock.name , value:timeBlock.id}
+  public createBlockItems = [
+    { name: 'Test1', value: 1 },
+    { name: 'Test2', value: 2 },
+    { name: 'Test3', value: 3 },
+  ];
 
   constructor(private fb: FormBuilder, private rS: RoundService) {}
 
@@ -60,6 +66,6 @@ export class EditComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.roundForm.value);
+    this.rS.setRoundJson(this.roundForm.value as Round);
   }
 }
