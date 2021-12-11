@@ -74,6 +74,8 @@ export class RoundService {
     localStorage.setItem('round_json', JSON.stringify(roundObject));
   }
 
+  public deleteRound(id?: number) {}
+
   getRoundJson() {
     return JSON.parse(localStorage.getItem('round_json') as string);
   }

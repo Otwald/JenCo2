@@ -14,6 +14,7 @@ export class BaseComponent implements OnInit {
   public timeBlocks: Timeblock[] = [];
   public rounds?;
   public newRound: boolean = false;
+  public confirmDl: boolean = false;
   public selectBlock: number = 0;
   public buildTB = [
     { name: 'Start', value: 'start' },
@@ -43,13 +44,13 @@ export class BaseComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.rounds = this.rS.getRoundJson();
-    this.rS.round$.subscribe((data) => {
-      this.rounds = data;
-    });
+    this.timeBlocks = this.rS.getTimeBlockJson();
   }
 
   ngOnInit(): void {
-    this.timeBlocks = this.rS.getTimeBlockJson();
+    this.rS.round$.subscribe((data) => {
+      this.rounds = data;
+    });
     this.rS.select$.subscribe((data) => {
       this.selectBlock = data as number;
     });
@@ -58,6 +59,11 @@ export class BaseComponent implements OnInit {
 
   onEdit(id?: number) {
     this.router.navigate(['edit', id], { relativeTo: this.route });
+  }
+
+  onDelete(id?: number) {
+    this.confirmDl = false;
+    this.rS.deleteRound(id as number);
   }
 
   /**

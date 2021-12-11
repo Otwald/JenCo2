@@ -45,8 +45,13 @@
               >
               </ng-container>
               <ng-template #isGM>
+                <button (click)="confirmDl = true">Löschen</button>
                 <button (click)="onEdit(round.id)">Ändern</button>
-                <button>Löschen</button>
+                <div *ngIf="this.confirmDl">
+                  Wirklich löschen?
+                  <button (click)="this.confirmDl = false">Nein</button>
+                  <button (click)="onDelete(round.id)">Ja</button>
+                </div>
               </ng-template>
               <ng-template #notGM> <button>Austreten</button></ng-template>
             </ng-template>
